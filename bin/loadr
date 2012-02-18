@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'loadr'
+
+# assume the first argument is the file we want to load
+# eg 'loadr foo.rb'
+
+path = File.expand_path(ARGV.shift, Dir.pwd) # using full path so that LoadedNode#full_path gets expanded properly
+Loadr.monitor(path, __FILE__) do
+  load path
+end
+

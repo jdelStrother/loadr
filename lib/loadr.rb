@@ -45,14 +45,6 @@ module Loadr
 end
 
 
-
-if __FILE__==$0
-  path = File.expand_path(ARGV[0], Dir.pwd) # using full path so that LoadedNode#full_path gets expanded properly
-  Loadr.monitor(path, __FILE__) do
-    load path
-  end
-end
-
 at_exit do
   Loadr.root_node.mark_end!
   puts Loadr::Formatters::TextFormatter.new(Loadr.root_node).report
